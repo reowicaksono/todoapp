@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
+import 'package:todoapp/app/controllers/auth_controller.dart';
 
 import '../controllers/register_controller.dart';
 
 class RegisterView extends GetView<RegisterController> {
+
+  //Auth Controller
+  final auth = Get.find<AuthController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +50,7 @@ class RegisterView extends GetView<RegisterController> {
             height: 50,
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: () => controller.register(),
+              onPressed: () => auth.register(controller.namaController.text, controller.emailController.text, controller.passController.text, controller.nohpController.text),
               style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(18.0))),

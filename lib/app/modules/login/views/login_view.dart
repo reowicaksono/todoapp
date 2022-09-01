@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:todoapp/app/controllers/auth_controller.dart';
 
 import '../controllers/login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
+
+  //Auth Controller
+  final auth = Get.find<AuthController>();
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +37,7 @@ class LoginView extends GetView<LoginController> {
             height: 50,
             width: double.infinity,
             child: ElevatedButton(
-              onPressed: () => controller.login(),
+              onPressed: () => auth.login(controller.emailController.text, controller.passController.text),
               style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(18.0))),
