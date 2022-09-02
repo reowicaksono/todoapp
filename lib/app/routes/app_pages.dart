@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:todoapp/app/modules/widgets/views/introduction_view.dart';
 
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
@@ -29,6 +30,10 @@ class AppPages {
       name: _Paths.LOGIN,
       page: () => LoginView(),
       binding: LoginBinding(),
+    ),
+    GetPage(
+      name: _Paths.INTRODUCTION,
+      page: () => IntroductionView(),
     ),
   ];
 }

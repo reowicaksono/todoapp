@@ -9,6 +9,9 @@ class AuthController extends GetxController {
   CollectionReference referenceUser =
       FirebaseFirestore.instance.collection("users");
 
+  //logic introduction
+  bool isstarted = false;
+
   //Method Login
   void login(String email, String pass) async {
     auth.signOut();
@@ -56,13 +59,14 @@ class AuthController extends GetxController {
           });
           credential.user!.sendEmailVerification();
           Get.offAllNamed(Routes.HOME);
-          Get.snackbar('Success', 'Please check your mail or spam in your gmail for validation!!');
+          Get.snackbar('Success',
+              'Please check your mail or spam in your gmail for validation!!');
         }
       } on FirebaseAuthException catch (e) {
         if (e.code == 'weak-password') {
-          Get.snackbar('Error','The password provided is too weak.');
+          Get.snackbar('Error', 'The password provided is too weak.');
         } else if (e.code == 'email-already-in-use') {
-          Get.snackbar('Error','The account already exists for that email.');
+          Get.snackbar('Error', 'The account already exists for that email.');
         }
       } catch (e) {
         print(e);

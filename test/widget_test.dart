@@ -1,30 +1,72 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
-import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
-
-import 'package:todoapp/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  //EXAMPLE OF CV MAP TO LIST
+  Map<String,dynamic> mapData = {
+    "200535626819" : {
+      "nama" : "Reo Wicaksono",
+      "nohp" : 087748779010,
+      "alamat" : "Gebang"
+    },
+    "200535626817" : {
+      "nama" : "Reo Wicaksono",
+      "nohp" : 087748779010,
+      "alamat" : "Gebang"
+    },
+    "200535626816" : {
+      "nama" : "Reo Wicaksono",
+      "nohp" : 087748779010,
+      "alamat" : "Gebang"
+    },
+  };
+  var data = mapData["200535626819"]["nama"];
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+  var values = mapData.values.toList(); //CARA PERTAMA
+  var key = mapData.keys.toList();
+  newList () => mapData.entries.map((e) => e.value ).toList(); //CARA KEDUA
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+  // for (int i = 0; i < newList().length; i++){
+  //   return values[i];
+  // }
+  print(values);
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
-  });
+
+
+
+  /// API REQ EXAMPLE
+  ///  Uri urlKota = Uri.parse("https://api.banghasan.com/sholat/format/json/kota");
+//   var resKota = await http.get(urlKota);
+
+//   var jsonDataKota =
+//       (json.decode(resKota.body) as Map<String, dynamic>)["kota"];
+
+//   Uri namaKota = Uri.parse(
+//       "https://api.banghasan.com/sholat/format/json/kota");
+//   var resNamaKota = await http.get(namaKota);
+
+// Map<String, dynamic> userdata = json.decode(resNamaKota.body);
+
+//   NamaKota namaKota1 = NamaKota.fromJson(userdata);
+//   var a = namaKota1.kota![0].id;
+
+//   // var a = jsonDataNamaKota[0]["id"];
+
+//   var b = new DateTime.now()
+//             .toString()
+//             .substring(0,10);
+
+//   Uri urlJadwalShalat = Uri.parse(
+//       "https://api.banghasan.com/sholat/format/json/jadwal/kota/$a/tanggal/$b");
+//   var resJadwalShalat = await http.get(urlJadwalShalat);
+
+//   var jsonDataJadwalShalat = (json.decode(resJadwalShalat.body) as Map<String, dynamic>)["jadwal"];
+//   Jadwalshalat jadwalshalat = Jadwalshalat.fromJson(jsonDataJadwalShalat);
+
+//   //  print(jadwalshalat.data!.ashar);
+
+
+//    Uri urlx = Uri.parse("http://careernetwork.ml/getTamu.php?i=1");
+//    var response = await http.get(urlx);
+
+//    List? dataJson = (json.decode(response.body) as Map<String, dynamic>)["data"];
+//    print(dataJson);
 }

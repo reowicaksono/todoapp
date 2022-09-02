@@ -26,12 +26,20 @@ class HomeView extends GetView<HomeController> {
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.active) {
               var listData = snapshot.data!.docs;
+             
               return ListView.builder(
                 shrinkWrap: true,
                 physics: ClampingScrollPhysics(),
                 itemCount: listData.length,
                 itemBuilder: (context, index) {
-                  return ListTile();
+                  var data = (listData[index].data() as Map<String,dynamic>);
+                  var nama = data["nama"];
+                  print(data["nama"]);
+                  return ListTile(
+                    leading: Icon(Icons.person),
+                    
+                    title: Text('$nama'),
+                  );
                 },
               );
             } else {
