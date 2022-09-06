@@ -61,7 +61,7 @@ class IntroductionView extends GetView {
                   width: Get.width - (6 * edge),
                   child: ElevatedButton(
                     onPressed: () {
-                      auth.isstarted = true;
+                      auth.isstarted = !false;
                       Get.offAllNamed(Routes.LOGIN);
                     },
                     child: Text("Let's start"),
